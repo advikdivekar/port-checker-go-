@@ -65,6 +65,8 @@ func main() {
 		openPorts = append(openPorts, port)
 	}
 
+	//checkpoint 3
+
 	elapsed := time.Since(startTime)
 
 	fmt.Println("\nScan Complete")
