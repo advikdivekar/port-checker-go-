@@ -1,1 +1,1 @@
-module portchecker
+module port-scanner-go
