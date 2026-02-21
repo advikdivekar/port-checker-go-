@@ -37,6 +37,8 @@ func main() {
 	results := make(chan int)
 	var wg sync.WaitGroup
 
+	//checkpoint 2
+
 	// Start workers
 	for i := 0; i < *workers; i++ {
 		wg.Add(1)
