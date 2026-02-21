@@ -24,6 +24,8 @@ func main() {
 
 	timeout := time.Duration(*timeoutSec * float64(time.Second))
 
+	//checkpoint 1
+
 	fmt.Printf("\nScanning %s\n", *target)
 	fmt.Printf("Ports: %d-%d\n", *startPort, *endPort)
 	fmt.Printf("Workers: %d\n", *workers)
