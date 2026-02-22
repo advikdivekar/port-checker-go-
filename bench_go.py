@@ -10,7 +10,6 @@ RUNS_PER_TEST = 1
 TARGETS = [
     "google.com",
     "scanme.nmap.org"
-    "openai.com"
 ]
 
 CONFIGS = [
