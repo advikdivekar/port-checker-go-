@@ -11,6 +11,7 @@ type ScanResult struct {
 	Open     bool
 	Duration time.Duration
 	Timedout bool
+	Refused  bool
 }
 
 func ScanPort(target string, port int, timeout time.Duration) ScanResult {
@@ -24,11 +25,11 @@ func ScanPort(target string, port int, timeout time.Duration) ScanResult {
 	if err != nil {
 		// Detect timeout
 		if netErr, ok := err.(net.Error); ok && netErr.Timeout() {
-			return ScanResult{Port: port, Open: false, Duration: duration, Timedout: true}
+			return ScanResult{Port: port, Open: false, Duration: duration, Timedout: true, Refused: false}
 		}
-		return ScanResult{Port: port, Open: false, Duration: duration, Timedout: false}
+		return ScanResult{Port: port, Open: false, Duration: duration, Timedout: false, Refused: true}
 	}
 
 	conn.Close()
-	return ScanResult{Port: port, Open: true, Duration: duration, Timedout: false}
+	return ScanResult{Port: port, Open: true, Duration: duration, Timedout: false, Refused: false}
 }
