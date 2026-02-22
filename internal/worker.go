@@ -8,15 +8,14 @@ import (
 func Worker(
 	target string,
 	ports <-chan int,
-	results chan<- int,
+	results chan<- ScanResult,
 	timeout time.Duration,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
 
 	for port := range ports {
-		if ScanPort(target, port, timeout) {
-			results <- port
-		}
+		result := ScanPort(target, port, timeout)
+		results <- result
 	}
 }

@@ -13,14 +13,22 @@ type ScanResult struct {
 	Timedout bool
 }
 
-func ScanPort(target string, port int, timeout time.Duration) bool {
-	address := fmt.Sprintf("%s:%d", target, port)
+func ScanPort(target string, port int, timeout time.Duration) ScanResult {
+	start := time.Now()
 
+	address := fmt.Sprintf("%s:%d", target, port)
 	conn, err := net.DialTimeout("tcp", address, timeout)
+
+	duration := time.Since(start)
+
 	if err != nil {
-		return false
+		// Detect timeout
+		if netErr, ok := err.(net.Error); ok && netErr.Timeout() {
+			return ScanResult{Port: port, Open: false, Duration: duration, TimedOut: true}
+		}
+		return ScanResult{Port: port, Open: false, Duration: duration, TimedOut: false}
 	}
 
 	conn.Close()
-	return true
+	return ScanResult{Port: port, Open: true, Duration: duration, TimedOut: false}
 }

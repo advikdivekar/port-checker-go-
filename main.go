@@ -40,7 +40,7 @@ func main() {
 	startTime := time.Now()
 
 	ports := make(chan int, *workers)
-	results := make(chan int)
+	results := make(chan internal.ScanResult)
 	var wg sync.WaitGroup
 
 	//checkpoint 2
@@ -66,8 +66,19 @@ func main() {
 	}()
 
 	var openPorts []int
-	for port := range results {
-		openPorts = append(openPorts, port)
+	var totalDuration time.Duration
+	var timeoutCount int
+
+	for result := range results {
+		totalDuration += result.Duration
+
+		if result.TimedOut {
+			timeoutCount++
+		}
+
+		if result.Open {
+			openPorts = append(openPorts, result.Port)
+		}
 	}
 
 	sort.Ints(openPorts)
@@ -76,11 +87,11 @@ func main() {
 		fmt.Printf("[+] Port %d is OPEN\n", port)
 	}
 
-	//checkpoint 3
-
-	elapsed := time.Since(startTime)
+	avg := totalDuration / time.Duration(portRange)
 
 	fmt.Println("\nScan Complete")
 	fmt.Println("Open Ports:", openPorts)
-	fmt.Printf("Time taken: %.2f seconds\n", elapsed.Seconds())
+	fmt.Printf("Average Port Duration: %.2f ms\n", avg.Seconds()*1000)
+	fmt.Printf("Timeouts: %d\n", timeoutCount)
+	fmt.Printf("Time taken: %.2f seconds\n", time.Since(startTime).Seconds())
 }
