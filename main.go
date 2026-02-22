@@ -9,13 +9,6 @@ import (
 	"time"
 )
 
-type ScanResult struct {
-	Port     int
-	Open     bool
-	Duration time.Duration
-	Timedout bool
-}
-
 func main() {
 	target := flag.String("target", "", "Target host")
 	startPort := flag.Int("start", 1, "Start port")
