@@ -6,6 +6,13 @@ import (
 	"time"
 )
 
+type ScanResult struct {
+	Port     int
+	Open     bool
+	Duration time.Duration
+	Timedout bool
+}
+
 func ScanPort(target string, port int, timeout time.Duration) bool {
 	address := fmt.Sprintf("%s:%d", target, port)
 
