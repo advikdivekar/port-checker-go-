@@ -1,0 +1,22 @@
+# Compiled binary
+scanner
+*.exe
+*.out
+
+# Go build cache
+bin/
+build/
+
+# Test binaries
+*.test
+
+# Coverage files
+*.cover
+coverage.out
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
