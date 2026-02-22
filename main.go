@@ -67,8 +67,13 @@ func main() {
 
 	var openPorts []int
 	for port := range results {
-		fmt.Printf("[+] Port %d is OPEN\n", port)
 		openPorts = append(openPorts, port)
+	}
+
+	sort.Ints(openPorts)
+
+	for _, port := range openPorts {
+		fmt.Printf("[+] Port %d is OPEN\n", port)
 	}
 
 	//checkpoint 3
