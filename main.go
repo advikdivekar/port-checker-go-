@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"port-scanner-go/internal"
+	"sort"
 	"sync"
 	"time"
 )
@@ -68,6 +69,7 @@ func main() {
 	//checkpoint 3
 
 	elapsed := time.Since(startTime)
+	sort.Ints(openPorts)
 
 	fmt.Println("\nScan Complete")
 	fmt.Println("Open Ports:", openPorts)
