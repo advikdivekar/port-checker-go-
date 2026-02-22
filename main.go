@@ -17,6 +17,11 @@ func main() {
 	timeoutSec := flag.Float64("timeout", 1.0, "Timeout in seconds")
 
 	flag.Parse()
+	portRange := *endPort - *startPort + 1
+
+	if *workers > portRange {
+		*workers = portRange
+	}
 
 	if *target == "" {
 		fmt.Println("Target required: -target example.com")
