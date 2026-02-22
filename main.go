@@ -72,7 +72,7 @@ func main() {
 	for result := range results {
 		totalDuration += result.Duration
 
-		if result.TimedOut {
+		if result.Timedout {
 			timeoutCount++
 		}
 

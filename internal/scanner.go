@@ -24,11 +24,11 @@ func ScanPort(target string, port int, timeout time.Duration) ScanResult {
 	if err != nil {
 		// Detect timeout
 		if netErr, ok := err.(net.Error); ok && netErr.Timeout() {
-			return ScanResult{Port: port, Open: false, Duration: duration, TimedOut: true}
+			return ScanResult{Port: port, Open: false, Duration: duration, Timedout: true}
 		}
-		return ScanResult{Port: port, Open: false, Duration: duration, TimedOut: false}
+		return ScanResult{Port: port, Open: false, Duration: duration, Timedout: false}
 	}
 
 	conn.Close()
-	return ScanResult{Port: port, Open: true, Duration: duration, TimedOut: false}
+	return ScanResult{Port: port, Open: true, Duration: duration, Timedout: false}
 }
