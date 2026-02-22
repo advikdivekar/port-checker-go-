@@ -89,9 +89,14 @@ func main() {
 
 	avg := totalDuration / time.Duration(portRange)
 
-	fmt.Println("\nScan Complete")
-	fmt.Println("Open Ports:", openPorts)
+	fmt.Println("\n========== Scan Summary ==========")
+	fmt.Printf("Target: %s\n", *target)
+	fmt.Printf("Ports Scanned: %d\n", portRange)
+	fmt.Printf("Workers Used: %d\n", *workers)
+	fmt.Printf("Timeout: %.2fs\n", *timeoutSec)
+	fmt.Printf("Open Ports: %v\n", openPorts)
+	fmt.Printf("Timeout Count: %d\n", timeoutCount)
 	fmt.Printf("Average Port Duration: %.2f ms\n", avg.Seconds()*1000)
-	fmt.Printf("Timeouts: %d\n", timeoutCount)
-	fmt.Printf("Time taken: %.2f seconds\n", time.Since(startTime).Seconds())
+	fmt.Printf("Total Scan Time: %.2f seconds\n", time.Since(startTime).Seconds())
+	fmt.Println("==================================")
 }
