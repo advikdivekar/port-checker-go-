@@ -62,6 +62,9 @@ Benchmark Results (1–1024 ports, google.com & openai.com)
 • Go shows slightly lower overhead at higher concurrency
 • Differences are minimal for I/O-bound workloads
 
+## Results
+See: results/bench_results.md and plots/ folder
+
 ---
 
 ## Disclaimer
