@@ -54,6 +54,14 @@ It relies on the operating system’s TCP stack for retransmissions and timeout 
 
 This is not a SYN (half-open) scan.
 
+## Benchmark Results
+
+Benchmark Results (1–1024 ports, google.com & openai.com)
+
+• Performance scales with workers in both implementations
+• Go shows slightly lower overhead at higher concurrency
+• Differences are minimal for I/O-bound workloads
+
 ---
 
 ## Disclaimer
