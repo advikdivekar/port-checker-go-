@@ -26,7 +26,7 @@ for target in "${TARGETS[@]}"; do
 
     start=$(date +%s.%N)
 
-    ./scanner \
+    go run . \
       -target $target \
       -start $PORT_START \
       -end $PORT_END \

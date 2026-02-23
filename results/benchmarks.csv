@@ -1,0 +1,7 @@
+timestamp,lang,impl,workers,timeout_s,start_port,end_port,target,total_time_s
+2026-02-23T22:14:54+05:30,go,goroutine,50,2,1,1024,google.com,42.106954000
+2026-02-23T22:15:16+05:30,go,goroutine,100,2,1,1024,google.com,22.179247000
+2026-02-23T22:15:28+05:30,go,goroutine,200,2,1,1024,google.com,12.158795000
+2026-02-23T22:16:13+05:30,go,goroutine,100,4,1,1024,google.com,44.204196000
+2026-02-23T22:16:29+05:30,go,goroutine,300,4,1,1024,google.com,16.193208000
+2026-02-23T22:16:41+05:30,go,goroutine,500,4,1,1024,google.com,12.186326000
